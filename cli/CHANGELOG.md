@@ -10,6 +10,25 @@ The format of this changelog is based on [Keep a Changelog] and adheres to [Sema
 
 
 
+## [3.0.2] - 2025-10-13
+
+Architectural Runway.
+
+### Added
+
+- Default connection timeout of 30s.
+
+### Changed
+
+- The environment list parameter is no longer created with the profile (but it is still supported if present). Moving
+  the environment definition to the DBM DS configuration is recommended.
+
+### Fixed
+
+- User and password take precedence even if an API ML token is available.
+
+
+
 ## [3.0.1] - 2025-04-28
 
 Architectural Runway.
@@ -17,7 +36,7 @@ Architectural Runway.
 ### Added
 
 - Support for RMATMDG6 and RMATMDG5 templates for compare and deploy endpoints accordingly that apply global changes to
-all objects in a DDL.
+  all objects in a DDL.
 
 
 
@@ -30,7 +49,7 @@ all objects in a DDL.
 ### Changed
 
 - The `changeSetValues` parameter in the options profile now contains a default set of change specifications for the
-table DDL and the dependent objects scenario.
+  table DDL and the dependent objects scenario.
 
 ### Removed
 
@@ -95,7 +114,7 @@ This release includes minor security improvements. Update is recommended.
   - type
   - verify
   - workDatasetPrefix
-  
+
 - The `dbm-db2-options-profile` CLI parameter for all commands.
 
 ### Changed
@@ -195,7 +214,7 @@ This release includes minor security improvements. Update is recommended.
 
 - Data for the `--response-format-json | --rfj` output.
   - The `data` property contains additional information, so that you do not need to parse the message to retrieve it.
-  </br></br>
+    </br></br>
   - The `data.files` property may contain the following properties based on the output files available for a command executed:
     - ddlFile
     - summaryFile
@@ -204,11 +223,11 @@ This release includes minor security improvements. Update is recommended.
     - recoveryScript
     - migrateScript
     - errorFile
-  </br></br>
+      </br></br>
   - The `data.attributes` property may contain the following properties:
     - restartToken - Available for `execute` commands that failed.
     - hasObjectChanges - Available for the `compare ddl` command. `false` when there are 0 creates, alters, and drops - otherwise `true`.
-  </br></br>
+      </br></br>
   - The data structure is persistent across commands. If there is no data, the field remains empty:
     ```
     ...
@@ -247,7 +266,7 @@ This release includes minor security improvements. Update is recommended.
 
 - Error file now reports all steps.
   - Steps that are skipped due to the failure of a preceding step contain a warning message:\
-        `[WARNING] No content received.`
+    `[WARNING] No content received.`
 
 
 - Dependency versions updated and locked per NPM best practices:
@@ -265,7 +284,7 @@ This release includes minor security improvements. Update is recommended.
 ### Changed
 
 - Updated the warning message on status-token mismatch as follows:\
-`[Warning] Unable to process the DBM Data Service REST API status-token. Update dbm-db2 plugin to the matching major version of DBM Data Service.`
+  `[Warning] Unable to process the DBM Data Service REST API status-token. Update dbm-db2 plugin to the matching major version of DBM Data Service.`
 
 
 
@@ -331,6 +350,7 @@ This release includes minor security improvements. Update is recommended.
 
 
 
+[3.0.2]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.2
 [3.0.1]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.1
 [3.0.0]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.0
 [1.29.0]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/1.29.0
