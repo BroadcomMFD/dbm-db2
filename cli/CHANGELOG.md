@@ -10,6 +10,16 @@ The format of this changelog is based on [Keep a Changelog] and adheres to [Sema
 
 
 
+## [3.0.3] - 2025-12-02
+
+This release includes minor security improvements. Update is recommended.
+
+### Changed
+
+- The `terminationCharacter` default value changed to `#` when a new profile is created.
+
+
+
 ## [3.0.2] - 2025-10-13
 
 Architectural Runway.
@@ -350,6 +360,7 @@ This release includes minor security improvements. Update is recommended.
 
 
 
+[3.0.3]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.3
 [3.0.2]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.2
 [3.0.1]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.1
 [3.0.0]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.0

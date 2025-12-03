@@ -6,7 +6,19 @@ The format of this changelog is based on [Keep a Changelog] and adheres to [Sema
 
 ## [Unreleased]
 
-## 1.0.0 - 2025-10-23
+## [1.0.1] - 2025-12-03
+
+This release includes minor security improvements. Update is recommended.
+
+### Changed
+
+- The `terminationCharacter` default value changed to `#` when a new profile is created.
+
+### Fixed
+
+- Non-default termination characters are now supported in the `Analyze DDL` command.
+
+## [1.0.0] - 2025-10-23
 
 ### Added
 
@@ -87,3 +99,5 @@ Initial release.
 
 [Keep a Changelog]: https://keepachangelog.com/en/1.1.0/
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
+[1.0.1]: https://marketplace.visualstudio.com/items?itemName=broadcomMFD.dbm-db2
+[1.0.0]: https://marketplace.visualstudio.com/items?itemName=broadcomMFD.dbm-db2
