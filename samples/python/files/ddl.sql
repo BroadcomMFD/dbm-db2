@@ -31,6 +31,6 @@ CREATE  TABLE DEV2.DBMTB2
        , COL2 CHAR ( 2 )
        , COL3 CHAR ( 3 )
        )
-       IN DBMDB.DEVTS
+       IN DBMDB.DBMTS2
    CCSID         EBCDIC
 ;

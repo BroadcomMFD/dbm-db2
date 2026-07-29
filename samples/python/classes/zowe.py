@@ -19,6 +19,7 @@ EXPRESSLY ADVISED OF SUCH LOSS OR DAMAGE.
 
 
 import json
+import shlex
 import subprocess
 
 
@@ -45,9 +46,10 @@ class Zowe:
     @staticmethod
     def __execute_command(command: str, raise_exc=False):
         failed = False
+        args = shlex.split(command)
 
         try:
-            res = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
+            res = subprocess.check_output(args, stderr=subprocess.STDOUT, shell=False)
         except subprocess.CalledProcessError as e:
             failed = True
             res = e.output

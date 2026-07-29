@@ -16,7 +16,6 @@
 # LIMITATION, LOST PROFITS, BUSINESS INTERRUPTION, GOODWILL, OR LOST
 # DATA, EVEN IF BROADCOM IS EXPRESSLY ADVISED OF SUCH LOSS OR DAMAGE.
 
-
 # Reusable tasks for error processing:
 # A. Process error file if available:
 # - Read error file.
@@ -24,30 +23,29 @@
 # - Print failed job information.
 # B. Just exit.
 
-
 - name: Error file processing
   when: command_result.files.error_file is defined
   block:
-  - name: Read error file
-    delegate_to: localhost
-    changed_when: false
-    shell: cat {{ command_result.files.error_file }}
-    register: read_result
-  
-  - name: Parse YAML content
-    delegate_to: localhost
-    set_fact:
-      error_file_content: "{{ read_result.stdout | from_yaml }}"
-  
-  - name: Print failed job information
-    delegate_to: localhost
-    fail:
-      msg: "{{ error_file_content.jobName }}({{ error_file_content.jobId}}) - {{ error_file_content.jobRetCode }}"
-    when: True
+    - name: Read error file
+      delegate_to: localhost
+      ansible.builtin.slurp:
+        src: "{{ command_result.files.error_file }}"
+      register: read_result
+
+    - name: Parse YAML content
+      delegate_to: localhost
+      set_fact:
+        error_file_content: "{{ read_result.content | b64decode | from_yaml }}"
+
+    - name: Print failed job information
+      delegate_to: localhost
+      fail:
+        msg: "{{ error_file_content.jobName }}({{ error_file_content.jobId}}) - {{ error_file_content.jobRetCode }}"
+      when: True
 
 # Error itself is displayed in DBM-Db2 task.
 - name: Exit on no error file
   when: command_result.files.error_file is not defined
   delegate_to: localhost
   fail:
-    msg:
+    msg: "Unknown error."

@@ -4,11 +4,44 @@ This document lists changes made to the DBM-Db2 plug-in for Zowe CLI.
 
 The format of this changelog is based on [Keep a Changelog] and adheres to [Semantic Versioning].
 
-
-
 ## [Unreleased]
 
+## [3.0.7] - 2026-07-13
 
+This release includes minor security improvements. An update is recommended.
+
+<!--
+### Added
+
+- The `Run SQL` command to execute SQL queries against a Db2 subsystem.
+-->
+
+## [3.0.6] - 2026-05-26
+
+This release includes minor security improvements. An update is recommended.
+
+### Added
+
+- `Execute` commands now return an output file that contains the script execution log.
+
+### Changed
+
+- Connection errors now provide more details, including the message number and source.
+- The `Execute migration-script` error file now displays script logs for both source and target Db2 subsystems.
+
+## [3.0.5] - 2026-02-25
+
+This release includes minor security improvements. An update is recommended.
+
+### Changed
+
+- The error file now shows the most relevant information first.
+- The error file now includes additional contextual information.
+- An error file is now created for connection errors.
+
+## [3.0.4] - 2026-01-12
+
+This release includes minor security improvements. An update is recommended.
 
 ## [3.0.3] - 2025-12-02
 
@@ -17,8 +50,6 @@ This release includes minor security improvements. Update is recommended.
 ### Changed
 
 - The `terminationCharacter` default value changed to `#` when a new profile is created.
-
-
 
 ## [3.0.2] - 2025-10-13
 
@@ -37,8 +68,6 @@ Architectural Runway.
 
 - User and password take precedence even if an API ML token is available.
 
-
-
 ## [3.0.1] - 2025-04-28
 
 Architectural Runway.
@@ -47,8 +76,6 @@ Architectural Runway.
 
 - Support for RMATMDG6 and RMATMDG5 templates for compare and deploy endpoints accordingly that apply global changes to
   all objects in a DDL.
-
-
 
 ## [3.0.0] - 2024-09-25
 
@@ -65,8 +92,6 @@ Architectural Runway.
 
 - Zowe CLI V1 support.
 
-
-
 ## [1.29.0] - 2024-07-11
 
 This release includes minor security improvements. Update is recommended.
@@ -77,12 +102,9 @@ This release includes minor security improvements. Update is recommended.
 - CLI and connection profile parameter `basePath` for routing REST requests to a specific DBM Data Service instance.
 - CLI parameters `token-type`, `token-value`, `cert-file`, and `cert-key-file` for API Mediation Layer authentication.
 
-
 ## [1.28.3] - 2024-05-27
 
 Architectural Runway.
-
-
 
 ## [1.28.2] - 2024-03-01
 
@@ -90,13 +112,9 @@ Architectural Runway.
 
 - `--target-db2`, `--source-db2` parameters required even if specified in the DBM-Db2 Options Profile.
 
-
-
 ## [1.28.1] - 2024-02-19
 
 Architectural Runway.
-
-
 
 ## [1.28.0] - 2024-02-14
 
@@ -124,7 +142,6 @@ This release includes minor security improvements. Update is recommended.
   - type
   - verify
   - workDatasetPrefix
-
 - The `dbm-db2-options-profile` CLI parameter for all commands.
 
 ### Changed
@@ -153,8 +170,6 @@ This release includes minor security improvements. Update is recommended.
 
 - The title of the `dbm-db2-profile` changes to "DBM-Db2 Connection Profile".
 
-
-
 ## [1.27.1] - 2023-10-12
 
 This release includes minor security improvements. Update is recommended.
@@ -164,8 +179,6 @@ This release includes minor security improvements. Update is recommended.
 - Error file containing non-printable YAML characters.
 - `--target-db2` and `--source-db2` parameters not supporting data sharing group names.
 - `--match-set-file` format description having outdated length specification limits.
-
-
 
 ## [1.27.0] - 2023-09-12
 
@@ -180,13 +193,11 @@ This release includes minor security improvements. Update is recommended.
   - protocol
   - work-dataset-prefix
 
-
 - The `termination-character` parameter added for the following commands:
   - compare ddl
   - deploy ddl
   - generate ddl
   - prepare migration
-
 
 - `authid` and `sqlid` parameters added for the following commands:
   - check ddl
@@ -199,13 +210,10 @@ This release includes minor security improvements. Update is recommended.
 
 - DBM-Db2 profile is no longer required for execution.
 
-
 - Removed `environmentList` property with local value from the error file.\
   It still contains the `environment` property which reflects the actual value that is used during execution.
 
-
 - Renamed property `dbmProfileParameters` -> `options`.
-
 
 - Output file paths hardening to ensure writing in the end of execution:
   - Switched to using forward slash only during reporting.
@@ -215,8 +223,6 @@ This release includes minor security improvements. Update is recommended.
 ### Fixed
 
 - Password value displayed in `arguments` section of an error file upon provided as CLI parameter.
-
-
 
 ## [1.26.0] - 2023-05-24
 
@@ -251,8 +257,6 @@ This release includes minor security improvements. Update is recommended.
 
 - `--rfj` parameter not supported when provided without a value
 
-
-
 ## [1.25.0] - 2023-02-10
 
 ### Added
@@ -261,8 +265,6 @@ This release includes minor security improvements. Update is recommended.
 - The `--output-recovery-script` alias for the `execute compare-script` command.
   - Complements the existing `--output-recovery-file` parameter.
   - References in terminal and command help now also use the term "script".
-
-
 
 ## [1.24.2] - 2022-12-12
 
@@ -273,17 +275,13 @@ This release includes minor security improvements. Update is recommended.
   - Distinction between the client-side and server-side issues.
   - Added error reason information.
 
-
 - Error file now reports all steps.
   - Steps that are skipped due to the failure of a preceding step contain a warning message:\
     `[WARNING] No content received.`
 
-
 - Dependency versions updated and locked per NPM best practices:
   - (Peer dependency) @zowe/imperative `^5.3.8` -> `^5.7.0`
   - (Dependency) @zowe/core-for-zowe-sdk `~7.4.2` -> `7.8.0`
-
-
 
 ## [1.24.0] - 2022-11-18
 
@@ -295,8 +293,6 @@ This release includes minor security improvements. Update is recommended.
 
 - Updated the warning message on status-token mismatch as follows:\
   `[Warning] Unable to process the DBM Data Service REST API status-token. Update dbm-db2 plugin to the matching major version of DBM Data Service.`
-
-
 
 ## [1.23.13] - 2022-11-14
 
@@ -317,15 +313,11 @@ This release includes minor security improvements. Update is recommended.
 
 - Authentication types other than "Basic" are not supported.
 
-
-
 ## [1.23.7] - 2022-09-13
 
 ### Changed
 
 - Error file converted to YAML format.
-
-
 
 ## [1.23.4] - 2022-09-02
 
@@ -342,8 +334,6 @@ This release includes minor security improvements. Update is recommended.
 
 - Base connection options provided with command are ignored.
 
-
-
 ## [1.21.5] - 2022-05-27
 
 ### Added
@@ -358,8 +348,10 @@ This release includes minor security improvements. Update is recommended.
   - generate ddl
   - prepare migration
 
-
-
+[3.0.7]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.7
+[3.0.6]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.6
+[3.0.5]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.5
+[3.0.4]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.4
 [3.0.3]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.3
 [3.0.2]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.2
 [3.0.1]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.1

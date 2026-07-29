@@ -6,7 +6,75 @@ The format of this changelog is based on [Keep a Changelog] and adheres to [Sema
 
 ## [Unreleased]
 
-## [1.0.1] - 2025-12-03
+## [1.0.9][marketplace] - 2026-07-15
+
+This release includes minor security improvements. An update is recommended.
+
+## [1.0.8][marketplace] - 2026-07-03
+
+This release includes minor security improvements. An update is recommended.
+
+### Changed
+
+- Deploy DDL impact report table columns now have a fixed width.
+
+### Fixed
+
+- The Deploy DDL webview spinner now stops when a failure occurs.
+- Deploy DDL now supports the old DBM DS template that did not return the customized DDL.
+
+## [1.0.7][marketplace] - 2026-03-16
+
+### Added
+
+- Extended trace logging to include Zowe Imperative log records.
+
+## [1.0.6][marketplace] - 2026-03-12
+
+### Added
+
+- Extended logging in the `DBM-Db2` section of the VS Code `Output` panel.
+
+## [1.0.5][marketplace] - 2026-02-27
+
+This release includes minor security improvements. An update is recommended.
+
+### Changed
+
+- The error file now shows the most relevant information first.
+- The error file now includes additional contextual information.
+- An error file is now created for connection errors.
+
+## [1.0.4][marketplace] - 2026-01-16
+
+This release includes minor security improvements. An update is recommended.
+
+## [1.0.3][marketplace] - 2025-12-17
+
+This release includes minor security improvements. Update is recommended.
+
+Third party component React upgraded from 19.0.1 to 19.2.3. Although Code4z extension for Db2 for z/OS schema
+management include a version of React impacted by CVE-2025-55184, based on the information disclosed by React and
+investigation conducted by our teams at this time, Code4z extension for Db2 for z/OS schema management is not affected
+by CVE-2025-55182 because it does not use React Server Components. To prevent future possible exposure to this
+vulnerability, out of abundance of caution, we are providing this maintenance update to upgrade React.
+
+### Fixed
+
+- `Update Credentials` is now triggered correctly.
+- Db2 subsystems with same-named data sharing groups are now displayed correctly.
+
+## [1.0.2][marketplace] - 2025-12-11
+
+This release includes minor security improvements. Update is recommended.
+
+Third party component React upgraded from 19.0.0 to 19.0.1. Although Code4z extension for Db2 for z/OS schema
+management include a version of React impacted by CVE-2025-55182, based on the information disclosed by React and
+investigation conducted by our teams at this time, Code4z extension for Db2 for z/OS schema management is not affected
+by CVE-2025-55182 because it does not use React Server Components. To prevent future possible exposure to this
+vulnerability, out of abundance of caution, we are providing this maintenance update to upgrade React.
+
+## [1.0.1][marketplace] - 2025-12-03
 
 This release includes minor security improvements. Update is recommended.
 
@@ -18,7 +86,7 @@ This release includes minor security improvements. Update is recommended.
 
 - Non-default termination characters are now supported in the `Analyze DDL` command.
 
-## [1.0.0] - 2025-10-23
+## [1.0.0][marketplace] - 2025-10-23
 
 ### Added
 
@@ -99,5 +167,4 @@ Initial release.
 
 [Keep a Changelog]: https://keepachangelog.com/en/1.1.0/
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
-[1.0.1]: https://marketplace.visualstudio.com/items?itemName=broadcomMFD.dbm-db2
-[1.0.0]: https://marketplace.visualstudio.com/items?itemName=broadcomMFD.dbm-db2
+[marketplace]: https://marketplace.visualstudio.com/items?itemName=broadcomMFD.dbm-db2

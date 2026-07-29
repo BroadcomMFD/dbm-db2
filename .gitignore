@@ -1,3 +1,5 @@
 .idea
 __tests__/__results__
 samples/**/files
+.venv
+.env

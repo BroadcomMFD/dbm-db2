@@ -19,6 +19,7 @@ EXPRESSLY ADVISED OF SUCH LOSS OR DAMAGE.
 
 import json
 import os
+import shlex
 from typing import Tuple, Any, Literal
 
 import jmespath
@@ -36,7 +37,7 @@ Prerequisites:
 - Zowe CLI V2 is installed.
     https://docs.zowe.org/stable/user-guide/cli-installcli/#install-zowe-cli-from-npm
 
-- DBM-Db2 Plug-in for Zowe CLI (>=1.26.0) is installed.
+- DBM-Db2 Plug-in for Zowe CLI (>=3.0.8) is installed.
     https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli
 
 - Zowe DBM-Db2 profile configured in Zowe Team configuration.
@@ -92,11 +93,13 @@ def compare_ddl(ddl_path: str) -> dict:
     :return: Response dictionary.
     """
 
-    return Zowe.dbm(f'''compare ddl {ddl_path} --td {ssid} \
-    --error-file {folder}/error.log                        \
-    --output-compare-script {folder}/compare.txt           \
-    --output-summary-file {folder}/summary.txt             \
-    --output-impact-file {folder}/impact.json              \
+    folder_q = shlex.quote(folder)
+    
+    return Zowe.dbm(f'''compare ddl {shlex.quote(ddl_path)} --td {shlex.quote(ssid)} \
+    --error-file {f'{folder_q}/error.log'}                        \
+    --output-compare-script {f'{folder_q}/compare.txt'}           \
+    --output-summary-file {f'{folder_q}/summary.txt'}             \
+    --output-impact-file {f'{folder_q}/impact.json'}              \
     ''')
 
 
@@ -186,9 +189,13 @@ def execute_compare_script(output_files: dict) -> dict:
     :return: Response dictionary.
     """
 
-    return Zowe.dbm(f'''execute compare-script {output_files.get('compareScript')} \
-    --error-file {folder}/error.log                                                \
-    --output-recovery-script {folder}/recovery.txt                                 \
+    folder_q = shlex.quote(folder)
+    compare_script = output_files.get('compareScript')
+    compare_script_q = shlex.quote(compare_script) if compare_script else ''
+
+    return Zowe.dbm(f'''execute compare-script {compare_script_q} \
+    --error-file {f'{folder_q}/error.log'}                                                \
+    --output-recovery-script {f'{folder_q}/recovery.txt'}                                 \
     ''')
 
 
