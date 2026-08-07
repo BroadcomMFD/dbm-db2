@@ -6,6 +6,10 @@ The format of this changelog is based on [Keep a Changelog] and adheres to [Sema
 
 ## [Unreleased]
 
+## [3.0.8] - 2026-07-31
+
+This release includes minor security improvements. An update is recommended.
+
 ## [3.0.7] - 2026-07-13
 
 This release includes minor security improvements. An update is recommended.
@@ -277,7 +281,7 @@ This release includes minor security improvements. Update is recommended.
 
 - Error file now reports all steps.
   - Steps that are skipped due to the failure of a preceding step contain a warning message:\
-    `[WARNING] No content received.`
+     `[WARNING] No content received.`
 
 - Dependency versions updated and locked per NPM best practices:
   - (Peer dependency) @zowe/imperative `^5.3.8` -> `^5.7.0`
@@ -348,6 +352,7 @@ This release includes minor security improvements. Update is recommended.
   - generate ddl
   - prepare migration
 
+[3.0.8]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.8
 [3.0.7]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.7
 [3.0.6]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.6
 [3.0.5]: https://www.npmjs.com/package/@broadcom/dbm-db2-for-zowe-cli/v/3.0.5

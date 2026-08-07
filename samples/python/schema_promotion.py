@@ -19,6 +19,7 @@ EXPRESSLY ADVISED OF SUCH LOSS OR DAMAGE.
 
 import json
 import os
+import re
 import shlex
 from typing import Tuple, Any, Literal
 
@@ -174,10 +175,20 @@ def check_rules(output_files: dict, schema: str) -> None:
     assert jmespath.search('strategyOperationsStatisticsSummary.totals.drops', content) == 0, 'Drops detected.'
 
     # check tables schema
+    
+    # Validate schema identifier to prevent JMESPath expression injection.
+    # Unquoted Db2 schema names support alphanumeric characters, underscores, and national characters (@, #, $).
+    if not re.match(r'^[A-Za-z0-9_@#$]+$', schema):
+        raise ValueError(
+            f"Invalid schema name '{schema}'. Schema names must contain only alphanumeric characters, underscores, "
+            "or national characters (@, #, $) to prevent query injection vulnerabilities."
+        )
+
     tables = jmespath.search(
         f"strategyObjectListsDetail.tables[?join('', operations) == 'create'] | [?creator != '{schema}']",
         content
     )
+
     assert len(tables) == 0, f"New tables have forbidden schema definitions:\n{nl.join(str(t) for t in tables)}"
 
 

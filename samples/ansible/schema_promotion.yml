@@ -91,6 +91,16 @@
       when: impact_file_content.strategyOperationsStatisticsSummary.totals.drops != 0
 
     # Rule #2: Verify new tables use a specific schema (DEV).
+
+    # Validate dev_table_schema to prevent JMESPath query injection before interpolating into jmesquery.
+    # Unquoted Db2 schema names support alphanumeric characters, underscores, and national characters (@, #, $).
+    - name: Validate dev_table_schema format
+      delegate_to: localhost
+      ansible.builtin.assert:
+        that:
+          - dev_table_schema is match("^[A-Za-z0-9_@#$]+$")
+        fail_msg: "Invalid dev_table_schema '{{ dev_table_schema }}'. Schema names must contain only alphanumeric characters, underscores, or national characters (@, #, $) to prevent query injection vulnerabilities."
+
     - name: Get violating tables
       delegate_to: localhost
       set_fact:
