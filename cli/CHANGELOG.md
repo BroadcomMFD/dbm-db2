@@ -10,6 +10,10 @@ The format of this changelog is based on [Keep a Changelog] and adheres to [Sema
 
 This release includes minor security improvements. An update is recommended.
 
+### Fixed
+
+- Ensured authentication credential selection strictly follows the configured authOrder property.
+
 ## [3.0.7] - 2026-07-13
 
 This release includes minor security improvements. An update is recommended.
